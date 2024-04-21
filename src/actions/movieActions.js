@@ -45,7 +45,7 @@ export function fetchMovie(movieId) {
             }
             return response.json()
         }).then((res) => {
-            dispatch(movieFetched(res));
+            dispatch(movieFetched(res.movies));
         }).catch((e) => console.log(e));
     }
 }
@@ -67,15 +67,7 @@ export function fetchMovies() {
             }
             return response.json()
         }).then((res) => {
-            if (!res.ok) {
-                throw Error('Network response was not ok');
-            }
-            return res.json();
-        })
-        .then((data) => {
-            console.log('Movies data:', data); // Check the structure of data received
-            dispatch(moviesFetched(data.movies)); // Assuming movies array is inside a 'movies' property
-        })
-        .catch((e) => console.log('Error fetching movies:', e.message)); // Log the specific error message
+            dispatch(moviesFetched(res.movies));
+        }).catch((e) => console.log(e));
     }
 }
