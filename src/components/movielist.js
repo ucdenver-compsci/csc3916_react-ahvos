@@ -29,7 +29,7 @@ class MovieList extends Component {
     }
 
     render() {
-        const MovieListCarousel = ([movieList]) => {
+        const MovieListCarousel = ({movieList}) => {
             if (!movieList) {
                 return <div>Loading....</div>
             }
